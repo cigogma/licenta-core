@@ -22,6 +22,11 @@ class StationDevice extends Model
         return $this->belongsTo(Station::class);
     }
 
+    public function probes()
+    {
+        return $this->hasMany(StationDeviceProbe::class);
+    }
+
     public function capabilities()
     {
         return $this->hasManyThrough(Capability::class, StationDeviceCapability::class);

@@ -24,4 +24,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:sanctum')->post('/stations/upload', [StationsController::class, 'uploadData']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/stations/upload', [StationsController::class, 'uploadData']);
+});
