@@ -5,6 +5,7 @@ use App\Http\Controllers\StationApiKeyController;
 use App\Http\Controllers\Stations\StationDataController;
 use App\Http\Controllers\StationController;
 use App\Http\Controllers\StationDeviceController;
+use App\Http\Controllers\StationDeviceMetricsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -36,4 +37,5 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::resource('stations', StationController::class)->names('stations');
     Route::resource('stations.keys', StationApiKeyController::class)->names('stations.keys');
     Route::resource('stations.devices', StationDeviceController::class)->names('stations.devices');
+    Route::get("devices/{device}/metrics", [StationDeviceMetricsController::class, 'getMetrics']);
 });
