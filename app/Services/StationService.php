@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Dto\StationDataDto;
 use App\Dto\StationDeviceProbeDataDto;
+use App\Models\Station;
 use App\Models\StationDevice;
 use App\Models\StationDeviceProbe;
 use Illuminate\Support\Facades\Log;
@@ -43,5 +44,22 @@ class StationService
             // });
             // StationDeviceProbe::createMany($probes);
         }
+    }
+
+    public function register(array $data)
+    {
+        return Station::create($data);
+    }
+
+    public function update(Station $station, array $data)
+    {
+        $station->fill($data);
+        $station->save();
+        return $station;
+    }
+
+    public function delete(Station $station)
+    {
+        return $station->delete();
     }
 }

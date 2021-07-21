@@ -16,6 +16,7 @@ class CreateStationsTable extends Migration
         Schema::create('stations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->foreignId('user_id')->nullable();
             $table->string('mac')->nullable();
             $table->string('details')->nullable();
             $table->timestamps();
