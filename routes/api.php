@@ -38,4 +38,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::resource('stations.keys', StationApiKeyController::class)->names('stations.keys');
     Route::resource('stations.devices', StationDeviceController::class)->names('stations.devices');
     Route::get("devices/{device}/metrics", [StationDeviceMetricsController::class, 'getMetrics']);
+    Route::get("devices/{device}/latest-value", [StationDeviceMetricsController::class, 'getLatestValue']);
+
 });

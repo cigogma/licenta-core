@@ -33,4 +33,15 @@ class StationDeviceMetricsController
             throw ValidationException::withMessages(['error' => $e->getMessage()]);
         }
     }
+
+    public function getLatestValue(Request $request){
+        try {
+            $user = $request->user();
+            $device = StationDevice::find($request->route('device'));
+            $result = $this->stationDeviceService->getLatestValue($device, $request->input('type'));
+            return response()->json(['value' => $result]);
+        } catch (\Throwable $e) {
+            throw ValidationException::withMessages(['error' => $e->getMessage()]);
+        }
+    }
 }

@@ -44,4 +44,7 @@ class StationDeviceService
         });
         return ['values' => $values, 'labels' => $dates];
     }
+    public function getLatestValue(StationDevice $device, string $type){
+        return $device->probes()->where('type', $type)->orderBy('captured_at', 'DESC')->first()?->value;
+    }
 }

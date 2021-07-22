@@ -15,6 +15,7 @@ class StationDevice extends Model
 
     protected $fillable = [
         'mac',
+        'name',
         'station_id'
     ];
 

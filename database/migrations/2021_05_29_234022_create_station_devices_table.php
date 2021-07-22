@@ -16,6 +16,7 @@ class CreateStationDevicesTable extends Migration
         Schema::create('station_devices', function (Blueprint $table) {
             $table->id();
             $table->string('mac');
+            $table->string('name')->nullable();
             $table->unsignedBigInteger('station_id');
             $table->timestamps();
         });
